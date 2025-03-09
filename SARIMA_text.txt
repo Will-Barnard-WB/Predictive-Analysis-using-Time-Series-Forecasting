@@ -3,3 +3,91 @@ SARIMA
 
 - SARIMA stands for Seasonal Autoregressive Integrated Moving Average.
 - This can be broken down into 4 parts: S, AR, I and MA.
+
+- (1-phi(1)B-...-phi(p)B^p)(1-PHI(1)B^s-....-PHI(P)B^Ps)Y(t) = (1+theta(1)B+...+theta(q)B^q)(1+THETA(q)B^s+...+THETA(q)B^Qs)(error at t)
+
+Seasonality (S):
+- Patterns in the data that repeat over regular intervals.
+- E.g. temperature following a yearly cycle with higher temperatures in the summer, and lower temperatures in the winter.
+
+Autoregression (AR):
+- Predicting the current value of a time series based on its own past values.
+- Assumes past values in the data have a direct impact on future values.
+- Expresses the current value as a linear functoin of its previous values (lags). It captures the dependence between the curent value
+  and its past.
+- Y(t) = phi(1)Y(t-1) + phi(2)Y(t-2) + ... + phi(p)Y(t-p) + (error at time t)
+
+Integrated (I):
+- Ensuring that data is stationary. 
+- A stationary series has consistent mean, variance and covariance over time.
+- To make data stationary, we perform differencing. 
+- Perform non-seasonal differencing if data isn't stationary (contains a trend), and seasonal differencing if the ACF plot shows significant   lags at multiples of the seasonal preriod.
+- Y(t)' = Y(t) - Y(t-1) *non-seasonal*
+- Y(t)' = Y(t) - Y(t-12) *seasonal*
+
+Moving Average (MA):
+- Using past errors (or residuals) of the predictions to make bettwe forecasts.
+- Can be thought of as adjusting yout predictions based on how much you were wrong in the past.
+- It is effectively a weighted sum of past errors (residuals), and models how past shocks (or noise) affect future values.
+- Y(t) = (mean of the series) + (error at time t) + (theta(1))(error at time (t-1)) + ... + theta(q)(error at time (t-q))
+
+SARIMA is an extension of the ARIMA model, that handles seasonal data, hence the 'S'.
+SARIMA can be written as: SARIMA(p, d, q)(P, D, Q, m)
+
+Non-seasonal parameters:
+- p = number of autoregressive terms (AR)
+- d = number of differencing steps (to make the series stationary)
+- q = number of moving average terms (MA)
+
+Seasonal parameters:
+- P = seasonal autoregressive terms (seasonal AR)
+- D = seasonal differencing steps (seasonal trends)
+- Q = seasonal moving average terms (seasonal MA)
+- m = number of periods in each season
+
+We can find these parameters from our ACF and PACF graphs.
+
+ACF (Autocorrelation Function):
+- ACF tells you how similar the data at one point is to the data at another point in the past.
+- It measures the relatiosnhip between a series and its lags (previous time periods).
+- If the ACF shows high values at certain lags, it means there is a strong relationship between the current value and the value at that lag.
+- ACF at lag k = Cov(Y(t), Y(t-k) / root ( Var(Y(t)) . Var(Y(t-k)) ) 
+
+PACF (Partial Autocorrelation Function)
+- Similar to the ACF, but removes the influence of all the other lags in the data, and shows you the direct relationship between the current 
+  value and a specific past value (lag).
+- PACF tells you the direct correlation between the current value adn a past value.
+- PACF at lag k = Corr(Y(t), Y(t-k) | Y(t-1),Y(t-2),...,Y(t-(k-1)) ) 
+
+To find parameter 'p':
+- Look at the PACF plot to determine the number of lags to include in the model.
+- If the PACF cuts off after a certain lag, then p is the lag at which the PACF stops being significant. 
+
+To find parameter 'd':
+- Rounds of differencing are used to make a time series stationary.
+- If the time series has a clear trend (e.g. up or down), you might need to perform rounds of differencing to remove that trend.
+- To check if differencing has worked, you can plot the ACF of the differenced series. If the ACF shows no significant lags (drops to near     zero quickly), the series is stationary.
+
+To find parameter 'q':
+- Look at the ACF plot to detmerine the number of MA terms to include.
+- If the ACF drops after a certain lag, then q is the lag at which the ACF stops being significant. 
+
+To find parameter 'P':
+- Look at the PACF plot for the seasonal lags (multiples of the seasonal period).
+- E.g. for yearly seasonality, look at lags 12, 24, 36 etc.
+- Apply the same criteria as that for finding 'p'.
+
+To find parameter 'D':
+- Rounds of seasonal differencing performed.
+- It is similar to standard differencing but is done on the seasonal lags.
+- For example, for monthly data with yearly seasonality, the seasonal differencing formula is Y(t) - Y(t-12).
+
+To find parameter 'Q':
+- Look at the ACF plot for the seasonal lags (multiples of the seasonal period).
+- Apply the same crieria as the for finding 'q'.
+
+
+
+
+
+
