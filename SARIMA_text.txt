@@ -1,0 +1,5 @@
+
+SARIMA
+
+- SARIMA stands for Seasonal Autoregressive Integrated Moving Average.
+- This can be broken down into 4 parts: S, AR, I and MA.
