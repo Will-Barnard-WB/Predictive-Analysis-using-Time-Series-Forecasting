@@ -1,4 +1,20 @@
+Random Forest is a ML technique that can be used for time-series analyisis problems. 
+
+
+Pros (+):
+- Works well for short-term forecasting where patterns exist.
+- Handles missing data better than traditional models.
+- Captures complex relationships better than ARIMA.
+- Can include external factors like weather or promotions.
+
+
+Cons (-):
+- Not ideal for long-term forecasting (struggles with tends).
+- Doesn't model time explicitly. 
+
+
 Random Forest is a technique that combines many decision trees, and aggreagtes their predictions.
+
 
 Decision Trees:
 - A ML algorithm used for both classificaiton and regression.
@@ -21,5 +37,11 @@ Random Forest:
 - Each tree in the forest is trained on a different subset.
 - When splitting nodes, instead of considering all features, each tree ranomly slects only a subset of features (ensures the trees are less correlated and make different decisions).
 - For regression, the predictiosn from all trees are averaged to get the final output. 
+
+
+Random Forest for Time Series Analysis:
+- First we must perform feature engineering, in order to create input features for the model.
+- We do this by creating lags, and other values such as season or other time periods.
+- The time series data can then be fed into the random forest regression model.
                                                                                                                                        
                                                                                                                                        
