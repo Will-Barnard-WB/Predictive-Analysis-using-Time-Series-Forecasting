@@ -1,0 +1,25 @@
+Random Forest is a technique that combines many decision trees, and aggreagtes their predictions.
+
+Decision Trees:
+- A ML algorithm used for both classificaiton and regression.
+- It works like a flowchart - data is split into branches based on conditionals until a final decision is made.
+- It is built using if-else rules.
+- Decision trees chose the best feature to split the data into using criteria like Entropy (for classification) or Mean Squared Error (for regression).
+- Training the decision tree is as follows:
+    - Start with the entire dataset (root node).
+    - The algoirthm evalues each feature and selects the one that best separates the data (by looking at all possible splits). 
+    - The dataset is divided into two or more branches based on the selected feature. 
+    - Each subset (child node) now contains a portion of the original data. 
+    - The process is repeated recursively for each child node. 
+    - The process stops when all data in a node belongs to the same class (pure node), and thus splitting doesn't improve classification (no further information is gained).
+
+
+Random Forest:
+- Train multiple decision trees on different data subsets (Bootstrapping)
+- The algorithm randommly selects different subsets of the training data with replacement.
+- Each subset is slightly different from the orginal dataset.
+- Each tree in the forest is trained on a different subset.
+- When splitting nodes, instead of considering all features, each tree ranomly slects only a subset of features (ensures the trees are less correlated and make different decisions).
+- For regression, the predictiosn from all trees are averaged to get the final output. 
+                                                                                                                                       
+                                                                                                                                       
