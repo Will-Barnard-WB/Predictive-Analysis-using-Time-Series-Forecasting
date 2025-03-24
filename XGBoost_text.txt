@@ -1,0 +1,26 @@
+Gradient Boosting:
+- A ML technique used for both regression and classification problems.
+- It builds models sequentially, where each new model corrects the residuals (errors) of the previous ones.
+- The method relies on boosting weak learnings (e.g. a decision tree) to form a strong predictive model.
+
+
+How Gradient Boosting Works:
+- The process starts with an iniitial model, usually a simple prediction (e.g. mean for regression).
+- The model computes the residuals (errors) between the predictions, in the case the mean, and the actual values.
+- A new weak model is trained to predict these residuals further, aiming to bring them down to zero.
+- The new model's predictiosn are combined with the existing model's predictions using a learning rate parameter.
+- Then the weak learner stage is repeated for either a finite number of steps or a pre-determined accuracy is reached.
+
+
+XGBoost (Extreme Gradient Boosting):
+- XGBoost is an optimsited implementation of gradient boosting.
+- Designed for high performance and speed.
+- It uses paraellisation to speed up training.
+- Autoamtically learns how to handle missing data.
+- Uses a more effective tree pruning technique to avoid unncessary complexity.
+- Ues L1 (Lasso) and L2 (Ridge) regularisation to reduce overfitting.
+
+
+Advantages of XGBoost:
+
+
