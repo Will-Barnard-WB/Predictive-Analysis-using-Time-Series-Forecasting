@@ -1,0 +1,56 @@
+
+LSTM (long Short-Term Memory):
+
+- LSTM is a type of recurrent neural network (RNN) designed to model sequences of data.
+- Traditional RNNs suffer from issues like vanishing/exploding gradients, which is what LSTM aims to solve.
+- LSTMs are capable of learning long-range dependencies in sequential data.
+
+RNN's Gradient Problem:
+
+- The vanishing gradient problem is where the gradient used to update the weights in the network becomes extremely small as it is propagated back through the layers during training.
+- This makes it it difficult for RNNs to learn long-term dependencies in sequential data.
+- LSTM's were designed to address these challenges by incorporating memory cells that can maintain information over long periods, enabling them to learn long-term dependencies more efficiently.
+
+LSTM Architecture:
+
+- Cell State: this is the memory of the LSTM. It carries information from one time step to the next and can be modified by the gates.
+- The cell state allows the network to carry long-term information across many time steps.
+- Hidden State: this is the output of the LSTM unit at each time step, which can be used for predictions or passed onto the next layer in the network.
+
+Gates in LSTM:
+
+- LSTMs contain three types of gates that control the flow of information in and out of the cell state.
+- These gates are responsible for regulating the memory and learning what information should be remembered or discarded at each time step.
+
+- Forget Gate: the forget gate decides what information from the previous cell state should be discarded. It outputs a vlaue between 0 and 1, where 0 is completely forget and 1 is completely rememeber.
+- Forget Gate equation: sigmoid(weights(f) * [hidden_state(t-1), current_input] + bias(f))
+
+- Input Gate: The input gate controls how much new information should be added to the cell state. 
+- It outputs a value between 0 and 1, indicating how much of the new candidate information should be added to the cell state.
+- Input Gate equation: sigmoid(weights(i) * [hidden_state(t-1), current_input] + bias(i))
+
+- The new candidate cell is created by applying the tanh activation function to the input. 
+- Candiate Cell equation: tanh(weights(c) * [hidden_State(t-1), current_input] + bias(c))
+
+- Output Gate: the output gate determines the hidden state of the LSTM for the current time step.
+- It controls how much of the cell state should be outputted as the hidden state. 
+- Output Gate equation: sigmoid(weights(o) * [hidden_state(t-1), current_input] + bias(o))
+
+- The final hidden state is a combination of the cell state and the output gate:
+- Hidden State equation: output gate * tanh(candidate cell)
+
+Step-by-Step Flow:
+
+1. The input sequence is fed into the LSTM at each time step.
+2. The forget gate determines which information should be discarded from the preivous cell state.
+3. THe input gate determines which new information should be added to the cell state.
+4. The output gate produces the current hidden state based on the cell state.
+5. The updated cell state is passed along to the next time step, and the process repeats. 
+- The LSTM's ability to control memory through these gates allows it to remember long-range dependencies and forget irrelevant information.
+
+Dense Layers:
+
+- While LSTMs are powerful for processing sequential data, they are typically used in conjunction with dense layers to perform more complex tasks, such as classification or regression.
+- After processing sequential data with an LSTM layer, the output of the LSTM can be fed into one or more dense layers. These dense layers can further process the learned features from the LSTM and output the final prediction.
+- By adding a dense layer, we help the network distill the most useful patterns from the LSTM final output.
+- LSTM layers -> extract temporal patterns, Dense layers -> select the most important patterns. 
