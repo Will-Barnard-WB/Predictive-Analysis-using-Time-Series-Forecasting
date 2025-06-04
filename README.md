@@ -12,3 +12,4 @@ A time series is a sequence of data points, measured at successive times, such a
 **Hyperparameter Tuning Methods:**
 **-Grid Search, Random Search, AutoArima**
 
+Cross-correlation analysis, fourier terms, ACF, PACF plots 
