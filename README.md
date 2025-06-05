@@ -14,7 +14,7 @@ A time series is a sequence of data points, measured at successive times, such a
 
 Cross-correlation analysis, fourier terms, ACF, PACF plots 
 
-*Streamlit Dashboard*
+***Streamlit Dashboard***
 
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/e42ddb25-53b7-440d-b47e-5e95df3d7f6b" />
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/ff87be8d-d1f3-4b50-988b-6a09d2837c52" />
