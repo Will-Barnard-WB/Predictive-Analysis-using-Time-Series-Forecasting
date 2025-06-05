@@ -54,3 +54,23 @@ Dense Layers:
 - After processing sequential data with an LSTM layer, the output of the LSTM can be fed into one or more dense layers. These dense layers can further process the learned features from the LSTM and output the final prediction.
 - By adding a dense layer, we help the network distill the most useful patterns from the LSTM final output.
 - LSTM layers -> extract temporal patterns, Dense layers -> select the most important patterns. 
+
+Bayesian Optimization:
+- Bayesian Optimization is a smart, efficient way to find the best hyperparameters for a model.
+- Instead of randomly guessing or trying every combination (which can be slow and expensive), it builds a probabilistic model of the function that maps hyperparameters to model performance.
+- It uses past evaluation results to decide where to try next, focusing on promising regions in the hyperparameter space.
+- This is done by balancing exploration (trying new areas) and exploitation (focusing on areas likely to improve performance).
+- The key idea is to use a surrogate model (usually a Gaussian Process) to approximate the unknown function and an acquisition function to select the next set of parameters to evaluate.
+
+How Bayesian Optimization Works Step-by-Step:
+- Initialize: Start by trying a few sets of hyperparameters randomly and measure their performance.
+- Build Surrogate: Use these results to fit a surrogate model that predicts performance for any hyperparameter setting.
+- Choose Next Point: Use an acquisition function to pick the next hyperparameters to test, balancing trying uncertain areas and areas likely to perform well.
+- Evaluate: Train the model with the chosen hyperparameters and measure performance.
+- Update: Add the new result to the data and update the surrogate model.
+- Repeat: Continue this process iteratively until you find the best hyperparameters or run out of time/resources.
+
+Why Use Bayesian Optimization?
+- It’s more sample-efficient than grid or random search — you get better hyperparameters with fewer model trainings.
+- It can handle noisy or expensive-to-evaluate functions, like training complex ML models.
+- Well-suited for time-consuming tasks like tuning deep learning or time series models.
