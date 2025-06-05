@@ -77,16 +77,3 @@ Below are examples of logs generated during the Bayesian Optimization hyperparam
 
 ---
 
-## Getting Started
-
-Instructions to set up the project, install dependencies, and run the dashboard will be added soon.
-
----
-
-## License
-
-Specify license information here.
-
----
-
-Feel free to customize or ask if you want me to add installation or usage instructions!
