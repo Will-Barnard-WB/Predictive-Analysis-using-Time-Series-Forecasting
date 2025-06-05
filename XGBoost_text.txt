@@ -22,5 +22,28 @@ XGBoost (Extreme Gradient Boosting):
 
 
 Advantages of XGBoost:
+- Fast training speed and high model performance.
+- Built-in support for missing values and handling sparse data.
+- Regularisation techniques reduce overfitting and improve generalisation.
+- Flexible with various objective functions and evaluation metrics.
+- Scalable to large datasets and can be run in parallel or on GPUs.
+- Works well with structured/tabular data and often outperforms other models in time series regression
+
+Model Interpretability with SHAP:
+- SHAP (SHapley Additive exPlanations) helps explain how each feature contributes to individual predictions.
+- It uses game theory to fairly distribute a prediction among input features.
+- In this project, SHAP is used to interpret both standard and rolling predictions from the XGBoost model.
+
+SHAP Visualizations Used:
+- Summary Plot: Shows the overall impact, magnitude, and direction of features across the whole dataset.
+- Waterfall Plot: Breaks down the prediction for an individual instance step-by-step from the baseline to the final output.
+- These plots allow us to better understand why the model made certain predictions and gain trust in its behavior, 
+  especially useful when evaluating time-dependent patterns and model drift in rolling forecasts.
+
+
+
+
+
+
 
 
